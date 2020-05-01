@@ -15,7 +15,7 @@ export default ({data}) => {
   return (
     <Layout>
       {data.allFile.edges.map((image, i) => (
-        <div className={style.imageContainer} style={newIndex !== i ? {display: "none"} : {}}>
+        <div className={style.imageContainer} style={index !== i ? {display: "none"} : {}}>
           <Img
             fluid={image.node.childImageSharp.fluid}
             alt={image.node.base.split(".")[0]} // only use section of the file extension with the filename
@@ -28,7 +28,7 @@ export default ({data}) => {
 
 export const query = graphql`
   query IndexCarouselQuery {
-    allFile(filter: {relativeDirectory: {eq: "index"}}) {
+    allFile(filter: {relativeDirectory: {eq: "index"}}, sort: {fields: base}) {
       edges {
         node {
           base
