@@ -3,9 +3,9 @@ import React from "react"
 import {Sidebar} from "./sidebar"
 import style from "./layout.module.css"
 
-export const Layout = ({children}) => (
+export const Layout = ({children, leftSidebarRender}) => (
   <div className={style.layout}>
-    <div />
+    <div>{leftSidebarRender || null}</div>
     <div>{children}</div>
     <div />
     <Sidebar />
