@@ -66,6 +66,8 @@ export const Sidebar = () => {
   const [subNavState, setSubNavState] = useState(null)
   const SubNavElement = getSubNav(subNavState)
   return (
+    // Hiding the subnavigation when leaving the sidebar is not an "interaction", so the role is not helpful here
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div className={style.sidebar} onMouseLeave={() => setSubNavState(null)}>
       <div>
         <div className={style.mainNav}>
