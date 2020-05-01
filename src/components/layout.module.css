@@ -1,0 +1,9 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 200px 1fr;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+}
