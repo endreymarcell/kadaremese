@@ -16,7 +16,7 @@
 
 .articleContainer {
   position: fixed;
-  margin-right: calc(15% + 220px);
+  margin-right: calc(12% + 220px + 20px);
 }
 
 .articleTitle,

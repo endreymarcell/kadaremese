@@ -38,12 +38,12 @@ const SubNavFestmenyek = () => {
   return (
     <div>
       <div>
-        <Link to="/festmenyek/2014-15-ruhak" activeClassName="current-page">
+        <Link to="/festmenyek/ruhak" activeClassName="current-page">
           2014-15 Ruhák
         </Link>
       </div>
       <div>
-        <Link to="/festmenyek/2015-hungarikumok" activeClassName="current-page">
+        <Link to="/festmenyek/hungarikumok" activeClassName="current-page">
           2015 Hungarikumok
         </Link>
       </div>
@@ -87,7 +87,7 @@ export const Sidebar = () => {
           </div>
           <div>
             <Link
-              to="/festmenyek/2014-15-ruhak"
+              to="/festmenyek/ruhak"
               activeClassName="current-page"
               onMouseEnter={() => setSubNavState("festmenyek")}
             >
