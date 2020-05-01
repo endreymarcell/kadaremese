@@ -11,16 +11,17 @@ export default ({data}) => {
     setTimeout(() => {
       setIndex(newIndex)
     }, 5000)
-  }, [index])
-  const image = data.allFile.edges[index]
+  }, [newIndex])
   return (
     <Layout>
-      <div className={style.imageContainer}>
-        <Img
-          fluid={image.node.childImageSharp.fluid}
-          alt={image.node.base.split(".")[0]} // only use section of the file extension with the filename
-        />
-      </div>
+      {data.allFile.edges.map((image, i) => (
+        <div className={style.imageContainer} style={newIndex !== i ? {display: "none"} : {}}>
+          <Img
+            fluid={image.node.childImageSharp.fluid}
+            alt={image.node.base.split(".")[0]} // only use section of the file extension with the filename
+          />
+        </div>
+      ))}
     </Layout>
   )
 }
