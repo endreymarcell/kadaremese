@@ -1,3 +1,19 @@
 .circular-cutout {
   border-radius: 50%;
 }
+
+.cv-container {
+  padding-left: 200px;
+}
+
+.section-header {
+  font-size: 12px;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+.subsection-header {
+  font-size: 12px;
+  margin: 0;
+}
