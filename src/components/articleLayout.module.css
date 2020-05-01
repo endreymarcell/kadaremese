@@ -1,0 +1,37 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 4fr 3fr;
+}
+
+.left-column {
+}
+
+.right-column {
+  margin: 0 30px;
+}
+
+.img-container {
+  margin-bottom: 20px;
+}
+
+.articleContainer {
+  position: fixed;
+  margin-right: calc(15% + 220px);
+}
+
+.articleTitle,
+.articleSubtitle {
+  display: inline;
+  font-size: 12px;
+}
+
+.articleSubtitle {
+  display: inline;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.article {
+  font-size: 11px;
+  line-height: 16px;
+}
