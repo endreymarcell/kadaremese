@@ -31,6 +31,13 @@
   font-style: italic;
 }
 
+.articleTitleSecondLine {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 12px;
+  margin: 0;
+}
+
 .article {
   font-size: 11px;
   line-height: 16px;
