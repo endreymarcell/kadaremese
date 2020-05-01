@@ -1,9 +1,18 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.profile-picture-container {
+  margin-left: 20px;
+}
+
 .circular-cutout {
   border-radius: 50%;
 }
 
 .cv-container {
-  padding-left: 200px;
+  padding-left: 15%;
 }
 
 .section-header {

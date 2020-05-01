@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import {graphql} from "gatsby"
 import Img from "gatsby-image"
 import {Layout} from "../components/layout"
+import style from "./index.module.css"
 
 export default ({data}) => {
   const [index, setIndex] = useState(0)
@@ -14,10 +15,12 @@ export default ({data}) => {
   const image = data.allFile.edges[index]
   return (
     <Layout>
-      <Img
-        fluid={image.node.childImageSharp.fluid}
-        alt={image.node.base.split(".")[0]} // only use section of the file extension with the filename
-      />
+      <div className={style.imageContainer}>
+        <Img
+          fluid={image.node.childImageSharp.fluid}
+          alt={image.node.base.split(".")[0]} // only use section of the file extension with the filename
+        />
+      </div>
     </Layout>
   )
 }

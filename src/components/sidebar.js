@@ -72,7 +72,7 @@ export const Sidebar = () => {
       <div>
         <div className={style.mainNav}>
           <div>
-            <Link to="/cv" activeClassName="current-page">
+            <Link to="/cv" activeClassName="current-page" onMouseEnter={() => setSubNavState(null)}>
               Rólam
             </Link>
           </div>
@@ -104,6 +104,7 @@ export const Sidebar = () => {
           <SubNavElement />
         </div>
       </div>
+      <div />
     </div>
   )
 }
