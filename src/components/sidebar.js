@@ -1,35 +1,17 @@
 import React, {useState} from "react"
-import {Link} from "gatsby"
+import {graphql, Link, useStaticQuery} from "gatsby"
 import style from "./sidebar.module.css"
 
-const SubNavInstallaciok = () => {
+const SubNavInstallaciok = ({pages}) => {
   return (
     <div>
-      <div>
-        <Link to="/installaciok/betonpixelek" activeClassName="current-page">
-          Betonpixelek
-        </Link>
-      </div>
-      <div>
-        <Link to="/installaciok/privat-horizont" activeClassName="current-page">
-          Privát horizont
-        </Link>
-      </div>
-      <div>
-        <Link to="/installaciok/orlodes" activeClassName="current-page">
-          Őrlődés
-        </Link>
-      </div>
-      <div>
-        <Link to="/installaciok/inkognito-mod" activeClassName="current-page">
-          Inkognito mód
-        </Link>
-      </div>
-      <div>
-        <Link to="/installaciok/no-line" activeClassName="current-page">
-          No-line
-        </Link>
-      </div>
+      {pages.map((page) => (
+        <div>
+          <Link to={`/installaciok/${page.slug}`} activeClassName="current-page" key={page.slug}>
+            {page.title}
+          </Link>
+        </div>
+      ))}
     </div>
   )
 }
@@ -51,10 +33,10 @@ const SubNavFestmenyek = () => {
   )
 }
 
-const getSubNav = (subNav) => {
+const getSubNav = (subNav, pages) => {
   switch (subNav) {
     case "installaciok":
-      return () => <SubNavInstallaciok />
+      return () => <SubNavInstallaciok pages={pages} />
     case "festmenyek":
       return () => <SubNavFestmenyek />
     default:
@@ -63,8 +45,22 @@ const getSubNav = (subNav) => {
 }
 
 export const Sidebar = () => {
+  const {
+    allContentfulArtworkPage: {nodes: pages},
+  } = useStaticQuery(
+    graphql`
+      query Query {
+        allContentfulArtworkPage(filter: {category: {eq: "installáció"}, title: {nin: "null"}}) {
+          nodes {
+            slug
+            title
+          }
+        }
+      }
+    `
+  )
   const [subNavState, setSubNavState] = useState(null)
-  const SubNavElement = getSubNav(subNavState)
+  const SubNavElement = getSubNav(subNavState, pages)
   return (
     // Hiding the subnavigation when leaving the sidebar is not an "interaction", so the role is not helpful here
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -78,7 +74,7 @@ export const Sidebar = () => {
           </div>
           <div>
             <Link
-              to="/installaciok/betonpixelek"
+              to={`/installaciok/${pages[0].slug}`}
               activeClassName="current-page"
               onMouseEnter={() => setSubNavState("installaciok")}
             >

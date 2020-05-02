@@ -2,10 +2,10 @@ import React from "react"
 import {graphql} from "gatsby"
 import Img from "gatsby-image"
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
-import {Layout} from "../../components/layout"
-import {ArticleLayout} from "../../components/articleLayout"
-import style from "../../components/articleLayout.module.css"
-import {flatten} from "../../utils"
+import {Layout} from "../components/layout"
+import {ArticleLayout} from "../components/articleLayout"
+import style from "../components/articleLayout.module.css"
+import {flatten} from "../utils"
 
 export default ({data}) => {
   const {
@@ -41,8 +41,8 @@ export default ({data}) => {
 }
 
 export const query = graphql`
-  query BetonpixelekQuery {
-    contentfulArtworkPage(title: {eq: "Betonpixelek"}) {
+  query($slug: String!) {
+    contentfulArtworkPage(slug: {eq: $slug}) {
       artworks {
         title
         date
