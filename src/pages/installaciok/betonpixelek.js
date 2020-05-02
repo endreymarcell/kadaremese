@@ -5,12 +5,13 @@ import {documentToReactComponents} from "@contentful/rich-text-react-renderer"
 import {Layout} from "../../components/layout"
 import {ArticleLayout} from "../../components/articleLayout"
 import style from "../../components/articleLayout.module.css"
+import {flatten} from "../../utils"
 
 export default ({data}) => {
   const {
     contentfulArtworkPage: {artworks},
   } = data
-  const allImages = artworks.map((artwork) => artwork.images).flat(1)
+  const allImages = flatten(artworks.map((artwork) => artwork.images))
   return (
     <Layout>
       <ArticleLayout>
