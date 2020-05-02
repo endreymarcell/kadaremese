@@ -18,7 +18,7 @@ exports.createPages = async ({graphql, actions}) => {
   result.data.allContentfulArtworkPage.nodes.forEach((node) => {
     createPage({
       path: `/${node.category.slug}/${node.slug}`,
-      component: path.resolve(`./src/templates/artwork-page.js`),
+      component: path.resolve(`./src/templates/artworkPage.js`),
       context: {
         slug: node.slug,
       },

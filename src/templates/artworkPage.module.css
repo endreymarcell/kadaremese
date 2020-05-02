@@ -3,9 +3,6 @@
   grid-template-columns: 1fr 4fr 3fr;
 }
 
-.left-column {
-}
-
 .right-column {
   margin: 0 30px;
 }
