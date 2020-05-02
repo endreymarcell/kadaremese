@@ -27,10 +27,15 @@ export default ({data}) => {
             <React.Fragment key={artwork.title}>
               <h1 className={style.articleTitle}>{artwork.title}</h1>{" "}
               <h2 className={style.articleSubtitle}>{artwork.date}</h2>
+              {artwork.technique ? <h2 className={style.articleTitleSecondLine}>{artwork.technique}</h2> : null}
+              {artwork.dimensions ? <h2 className={style.articleTitleSecondLine}>{artwork.dimensions}</h2> : null}
               <br />
-              <div className={style.article}>
-                {documentToReactComponents(artwork.childContentfulArtworkDescriptionRichTextNode.json)}
-              </div>
+              {artwork.childContentfulArtworkDescriptionRichTextNode ? (
+                <div className={style.article}>
+                  {documentToReactComponents(artwork.childContentfulArtworkDescriptionRichTextNode.json)}
+                  <br />
+                </div>
+              ) : null}
             </React.Fragment>
           ))}
         </div>
@@ -46,6 +51,8 @@ export const query = graphql`
       artworks {
         title
         date
+        technique
+        dimensions
         childContentfulArtworkDescriptionRichTextNode {
           json
         }

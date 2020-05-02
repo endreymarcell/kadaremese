@@ -15,7 +15,11 @@ export default ({data}) => {
   return (
     <Layout>
       {data.contentfulHomepageSlideshow.images.map((image, i) => (
-        <div className={style.imageContainer} style={index !== i ? {display: "none"} : {}}>
+        <div
+          className={style.imageContainer}
+          style={index !== i ? {display: "none"} : {}}
+          key={`homepage-slideshow-${i}`}
+        >
           <Img
             fluid={image.fluid}
             alt={image.title} // only use section of the file extension with the filename
