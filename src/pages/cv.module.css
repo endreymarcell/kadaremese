@@ -15,14 +15,18 @@
   padding-left: 12%;
 }
 
-.section-header {
+h1 {
   font-size: 12px;
   margin-bottom: 0;
   font-weight: normal;
   text-decoration: underline;
 }
 
-.subsection-header {
+h2 {
   font-size: 12px;
+  margin: 0;
+}
+
+p {
   margin: 0;
 }
