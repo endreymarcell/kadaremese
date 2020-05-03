@@ -39,3 +39,22 @@
   font-size: 11px;
   line-height: 16px;
 }
+
+@media only screen and (max-width: 600px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .left-column {
+    margin: 20px;
+  }
+
+  .right-column {
+    margin: 0;
+  }
+
+  .articleContainer {
+    position: initial;
+    margin: 0 20px;
+  }
+}

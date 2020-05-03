@@ -15,7 +15,7 @@ export default ({data}) => {
     <Layout>
       <div className={style.layout}>
         <div />
-        <div>
+        <div className={style.leftColumn}>
           {allImages.map((image) => (
             <div className={style.imgContainer} key={image.title}>
               <Img fluid={image.fluid} alt={image.title} />

@@ -13,3 +13,16 @@
 .site-title {
   font-weight: bold;
 }
+
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    position: initial;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px 20px 0 20px;
+  }
+
+  .main-nav {
+    border: none;
+    padding: 0;
+  }
+}
