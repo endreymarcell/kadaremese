@@ -48,24 +48,26 @@ export const Sidebar = () => {
     // Hiding the subnavigation when leaving the sidebar is not an "interaction", so the role is not helpful here
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div className={style.sidebar} onMouseLeave={() => setActiveCategorySlug(null)}>
-      <div className={style.mainNav}>
-        <div>
-          <Link to="/cv" activeClassName="current-page" onMouseEnter={() => setActiveCategorySlug(null)}>
-            Rólam
-          </Link>
-        </div>
-        {categories.map((category) => (
-          <div key={category.slug}>
-            <Link
-              to={`/${category.slug}/${pages.filter((page) => page.category.slug === category.slug)[0].slug}`}
-              activeClassName="current-page"
-              onMouseEnter={() => setActiveCategorySlug(category.slug)}
-              onClick={() => setActiveCategorySlug(category.slug)}
-            >
-              {category.name}
+      <div>
+        <div className={style.mainNav}>
+          <div>
+            <Link to="/cv" activeClassName="current-page" onMouseEnter={() => setActiveCategorySlug(null)}>
+              Rólam
             </Link>
           </div>
-        ))}
+          {categories.map((category) => (
+            <div key={category.slug}>
+              <Link
+                to={`/${category.slug}/${pages.filter((page) => page.category.slug === category.slug)[0].slug}`}
+                activeClassName="current-page"
+                onMouseEnter={() => setActiveCategorySlug(category.slug)}
+                onClick={() => setActiveCategorySlug(category.slug)}
+              >
+                {category.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
       <div>
         <Link to="/" className={style.siteTitle}>
