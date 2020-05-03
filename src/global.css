@@ -18,3 +18,7 @@ a:hover {
 a.current-page {
   color: #a0a09f;
 }
+
+p {
+  margin: 0;
+}

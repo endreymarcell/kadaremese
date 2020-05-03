@@ -15,14 +15,36 @@
   padding-left: 12%;
 }
 
-.section-header {
+h1.section-header {
   font-size: 12px;
   margin-bottom: 0;
   font-weight: normal;
   text-decoration: underline;
 }
 
-.subsection-header {
+h2.subsection-header {
   font-size: 12px;
   margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .layout > div:first-child {
+    order: 2;
+  }
+
+  .layout > div:last-child {
+    order: 1;
+  }
+
+  .cv-container {
+    margin: 0 20px;
+    padding: 0;
+  }
+  .profile-picture-container {
+    margin: 20px;
+  }
 }
