@@ -5,14 +5,16 @@ import {Layout} from "../components/layout"
 import style from "./index.module.css"
 
 export default ({data}) => {
-  const images = data.contentfulHomepage.slideshowImages
+  const {
+    contentfulHomepage: {slideshowImages: images, slideshowInterval: interval},
+  } = data
   const [index, setIndex] = useState(0)
   const newIndex = (index + 1) % images.length
   useEffect(() => {
     setTimeout(() => {
       setIndex(newIndex)
-    }, 5000)
-  }, [newIndex])
+    }, interval * 1000)
+  }, [newIndex, interval])
   return (
     <Layout>
       {images.map((image, i) => (
@@ -39,6 +41,7 @@ export const query = graphql`
           ...GatsbyContentfulFluid
         }
       }
+      slideshowInterval
     }
   }
 `
