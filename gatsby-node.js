@@ -4,42 +4,37 @@ exports.createPages = async ({graphql, actions}) => {
   const {createPage, createRedirect} = actions
   const {
     data: {
-      allContentfulArtworkCategory: {nodes: categories},
-      allContentfulArtworkPage: {nodes: pages},
+      contentfulHomepage: {artworkCategoryLinks: categories},
     },
   } = await graphql(`
-    query {
-      allContentfulArtworkCategory(filter: {name: {nin: "null"}}, sort: {fields: orderInNavMenu}) {
-        nodes {
-          slug
+    query PageHierarchyQuery {
+      contentfulHomepage {
+        artworkCategoryLinks {
           name
-        }
-      }
-      allContentfulArtworkPage(filter: {title: {nin: "null"}}) {
-        nodes {
           slug
-          title
-          category {
+          artworkPages {
             slug
+            title
           }
         }
       }
     }
   `)
-  pages.forEach((node) => {
-    createPage({
-      path: `/${node.category.slug}/${node.slug}`,
-      component: path.resolve(`./src/templates/artworkPage.js`),
-      context: {
-        slug: node.slug,
-      },
-    })
-  })
-  categories.forEach(({slug}) => {
-    const firstMatchingPageSlug = pages.find((page) => page.category.slug === slug).slug
+
+  categories.forEach((category) => {
+    const firstPageInCategory = category.artworkPages[0]
     createRedirect({
-      fromPath: "/" + slug,
-      toPath: `/${slug}/${firstMatchingPageSlug}`,
+      fromPath: "/" + category.slug,
+      toPath: `/${category.slug}/${firstPageInCategory.slug}`,
+    })
+    category.artworkPages.forEach((page) => {
+      createPage({
+        path: `/${category.slug}/${page.slug}`,
+        component: path.resolve(`./src/templates/artworkPage.js`),
+        context: {
+          slug: page.slug,
+        },
+      })
     })
   })
 }
