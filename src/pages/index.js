@@ -5,8 +5,9 @@ import {Layout} from "../components/layout"
 import style from "./index.module.css"
 
 export default ({data}) => {
+  const images = data.contentfulHomepage.slideshowImages
   const [index, setIndex] = useState(0)
-  const newIndex = (index + 1) % data.contentfulHomepageSlideshow.images.length
+  const newIndex = (index + 1) % images.length
   useEffect(() => {
     setTimeout(() => {
       setIndex(newIndex)
@@ -14,7 +15,7 @@ export default ({data}) => {
   }, [newIndex])
   return (
     <Layout>
-      {data.contentfulHomepageSlideshow.images.map((image, i) => (
+      {images.map((image, i) => (
         <div
           className={style.imageContainer}
           style={index !== i ? {display: "none"} : {}}
@@ -32,8 +33,8 @@ export default ({data}) => {
 
 export const query = graphql`
   query IndexSlideshowQuery {
-    contentfulHomepageSlideshow {
-      images {
+    contentfulHomepage {
+      slideshowImages {
         fluid {
           ...GatsbyContentfulFluid
         }
