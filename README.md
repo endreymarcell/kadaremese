@@ -1,5 +1,7 @@
 # Kádár Emese
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![kadaremese](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/qvss5d/master&style=flat-square&logo=cypress)](https://dashboard.cypress.io/projects/qvss5d/runs)  
 Professional website for Emese Kádár
 
 # Usage
