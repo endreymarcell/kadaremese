@@ -9,7 +9,9 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "cyo": "cypress open",
+    "cy": "cypress run"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
