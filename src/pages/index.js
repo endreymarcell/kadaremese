@@ -18,6 +18,7 @@ export default ({data}) => {
       }, interval * 1000)
     }
   }, [newIndex, interval])
+  const [loadedImages, setLoadedImages] = useState([])
   return (
     <Layout>
       {images.map((image, i) => (
@@ -25,10 +26,13 @@ export default ({data}) => {
           className={style.imageContainer}
           style={index !== i ? {display: "none"} : {}}
           key={`homepage-slideshow-${i}`}
+          data-cy="homepage-slideshow-image"
+          data-loaded={loadedImages.includes(i)}
         >
           <Img
             fluid={image.fluid}
             alt={image.title} // only use section of the file extension with the filename
+            onLoad={() => setLoadedImages([i, ...loadedImages])}
           />
         </div>
       ))}
