@@ -21,20 +21,22 @@ exports.createPages = async ({graphql, actions}) => {
     }
   `)
 
-  categories.forEach((category) => {
-    const firstPageInCategory = category.artworkPages[0]
-    createRedirect({
-      fromPath: "/" + category.slug,
-      toPath: `/${category.slug}/${firstPageInCategory.slug}`,
-    })
-    category.artworkPages.forEach((page) => {
-      createPage({
-        path: `/${category.slug}/${page.slug}`,
-        component: path.resolve(`./src/templates/artworkPage.js`),
-        context: {
-          slug: page.slug,
-        },
+  categories
+    .filter((category) => category.artworkPages != null && category.artworkPages.length > 0)
+    .forEach((category) => {
+      const firstPageInCategory = category.artworkPages[0]
+      createRedirect({
+        fromPath: "/" + category.slug,
+        toPath: `/${category.slug}/${firstPageInCategory.slug}`,
+      })
+      category.artworkPages.forEach((page) => {
+        createPage({
+          path: `/${category.slug}/${page.slug}`,
+          component: path.resolve(`./src/templates/artworkPage.js`),
+          context: {
+            slug: page.slug,
+          },
+        })
       })
     })
-  })
 }

@@ -34,8 +34,11 @@ export const Sidebar = () => {
   const {
     contentfulHomepage: {artworkCategoryLinks: categories},
   } = data
+  const nonEmptyCategories = categories.filter(
+    (category) => category.artworkPages != null && category.artworkPages.length > 0
+  )
   const [activeCategorySlug, setActiveCategorySlug] = useState(null)
-  const activeCategory = categories.find((category) => category.slug === activeCategorySlug)
+  const activeCategory = nonEmptyCategories.find((category) => category.slug === activeCategorySlug)
   return (
     // Hiding the subnavigation when leaving the sidebar is not an "interaction", so the role is not helpful here
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -47,7 +50,7 @@ export const Sidebar = () => {
               Rólam
             </Link>
           </div>
-          {categories.map((category) => (
+          {nonEmptyCategories.map((category) => (
             <div key={category.slug}>
               <Link
                 to={`/${category.slug}/${category.artworkPages[0].slug}`}
