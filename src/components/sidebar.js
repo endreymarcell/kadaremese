@@ -47,7 +47,7 @@ export const Sidebar = () => {
         <div className={style.mainNav}>
           <div>
             <Link to="/cv" activeClassName="current-page" onMouseEnter={() => setActiveCategorySlug(null)}>
-              Rólam
+              CV
             </Link>
           </div>
           {nonEmptyCategories.map((category) => (
